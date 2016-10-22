@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Andrew Pike's Programming Portfolio\n\n\nCurrently a BCIS student at Auckland University of Technology\n\n\nProgramming experience in:\n\n\n\n\nJava\n\n\nC++\n\n\nC#\n\n\nHTML\n\n\nPHP\n\n\nJavascript\n\n\nSQL\n\n\n\n\nTool and middleware experience:\n\n\nUnity3D\n\nFMOD\n\nBox2D\n\nOpenGL", 
+            "text": "Andrew Pike's Programming Portfolio\n\n\nCurrently a BCIS student at Auckland University of Technology\n\n\nProgramming experience in:\n\n\n\n\nJava\n\n\nC++\n\n\nC#\n\n\nHTML\n\n\nPHP\n\n\nJavascript\n\n\nSQL\n\n\n\n\nTool and middleware experience:\n\n\n\n\nUnity3D\n\n\nFMOD\n\n\nBox2D\n\n\nOpenGL", 
             "title": "Home"
         }, 
         {
@@ -17,18 +17,68 @@
         }, 
         {
             "location": "/#tool-and-middleware-experience", 
-            "text": "Unity3D FMOD Box2D OpenGL", 
+            "text": "Unity3D  FMOD  Box2D  OpenGL", 
             "title": "Tool and middleware experience:"
         }, 
         {
             "location": "/backfire/", 
-            "text": "Backfire stuff\n\n\nA 2D bullet-hell SHMUP style game developed soley by myself", 
+            "text": "Backfire\n\n\nA 2D bullet-hell SHMUP style game developed soley by myself for the Individual game assignment.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
             "title": "Backfire"
         }, 
         {
-            "location": "/backfire/#backfire-stuff", 
-            "text": "A 2D bullet-hell SHMUP style game developed soley by myself", 
-            "title": "Backfire stuff"
+            "location": "/backfire/#backfire", 
+            "text": "A 2D bullet-hell SHMUP style game developed soley by myself for the Individual game assignment.", 
+            "title": "Backfire"
+        }, 
+        {
+            "location": "/backfire/#screenshot", 
+            "text": "Picture", 
+            "title": "Screenshot"
+        }, 
+        {
+            "location": "/backfire/#code", 
+            "text": "blach();", 
+            "title": "Code?"
+        }, 
+        {
+            "location": "/second/", 
+            "text": "The Second to Last of Us\n\n\nA top-down zombie survival game developed by myself, Adam Frewen and Seong Jho for the Team game assignment.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
+            "title": "The Second to Last of Us"
+        }, 
+        {
+            "location": "/second/#the-second-to-last-of-us", 
+            "text": "A top-down zombie survival game developed by myself, Adam Frewen and Seong Jho for the Team game assignment.", 
+            "title": "The Second to Last of Us"
+        }, 
+        {
+            "location": "/second/#screenshot", 
+            "text": "Picture", 
+            "title": "Screenshot"
+        }, 
+        {
+            "location": "/second/#code", 
+            "text": "blach();", 
+            "title": "Code?"
+        }, 
+        {
+            "location": "/agh/", 
+            "text": "Audio Game Hub\n\n\nTwo audio games developed by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
+            "title": "Audio Game Hub"
+        }, 
+        {
+            "location": "/agh/#audio-game-hub", 
+            "text": "Two audio games developed by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.", 
+            "title": "Audio Game Hub"
+        }, 
+        {
+            "location": "/agh/#screenshot", 
+            "text": "Picture", 
+            "title": "Screenshot"
+        }, 
+        {
+            "location": "/agh/#code", 
+            "text": "blach();", 
+            "title": "Code?"
         }
     ]
 }
