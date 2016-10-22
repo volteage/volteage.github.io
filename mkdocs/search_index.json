@@ -22,63 +22,73 @@
         }, 
         {
             "location": "/backfire/", 
-            "text": "Backfire\n\n\nA 2D bullet-hell SHMUP style game developed soley by myself for the Individual game assignment.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
+            "text": "Backfire\n\n\nA 2D bullet-hell SHMUP style game developed by myself in C++ for the Individual game assignment.\n\n\nScreenshot\n\n\n\n\nBackfire gameplay - horizontal SHMUP with animated sprites for explosions, ammo bar\n\n\nEnemy wave algorithm\n\n\nEnemy waves were created by parsing a text file with values for numbers of each enemy in five waves. \nAt the start of the game the file is read and all the waves are pushed into a queue, which pops and spawns a new wave after the \nlast wave has been defeated.\n\n\nvoid\nGame::GenerateWaves()\n{\n\n    int typeA, typeB, typeC, boss;\n\n    for (int i = 1; i \n 6; i++)\n    {\n        switch (i)\n        {\n            case 1:\n                typeA = parser-\nParseIni(\"[Wave1]\", \"typeA\", 3);\n                typeB = parser-\nParseIni(\"[Wave1]\", \"typeB\", 0);\n                typeC = parser-\nParseIni(\"[Wave1]\", \"typeC\", 0);\n                boss =  parser-\nParseIni(\"[Wave1]\", \"boss\", 0);\n                break;\n            case 2:\n                typeA = parser-\nParseIni(\"[Wave2]\", \"typeA\", 1);\n                typeB = parser-\nParseIni(\"[Wave2]\", \"typeB\", 1);\n                typeC = parser-\nParseIni(\"[Wave2]\", \"typeC\", 1);\n                boss =  parser-\nParseIni(\"[Wave2]\", \"boss\", 0);\n                break;\n            case 3:\n                typeA = parser-\nParseIni(\"[Wave3]\", \"typeA\", 1);\n                typeB = parser-\nParseIni(\"[Wave3]\", \"typeB\", 2);\n                typeC = parser-\nParseIni(\"[Wave3]\", \"typeC\", 1);\n                boss = parser-\nParseIni(\"[Wave3]\", \"boss\", 0);\n                break;\n            case 4:\n                typeA = parser-\nParseIni(\"[Wave4]\", \"typeA\", 1);\n                typeB = parser-\nParseIni(\"[Wave4]\", \"typeB\", 2);\n                typeC = parser-\nParseIni(\"[Wave4]\", \"typeC\", 2);\n                boss = parser-\nParseIni(\"[Wave4]\", \"boss\", 0);\n                break;\n            case 5:\n                typeA = parser-\nParseIni(\"[Wave5]\", \"typeA\", 0);\n                typeB = parser-\nParseIni(\"[Wave5]\", \"typeB\", 0);\n                typeC = parser-\nParseIni(\"[Wave5]\", \"typeC\", 0);\n                boss = parser-\nParseIni(\"[Wave5]\", \"boss\", 1);\n                break;\n        }\n        Wave* temp = new Wave(typeA, typeB, typeC, boss);\n        m_waves.push(temp);\n    }\n}\n\nvoid\nGame::SpawnWave(Wave* w)\n{\n    if (w-\nGetTotal() \n 0 \n w-\nGetTotal() \n= 6)\n    {\n        int row2 = 0;\n        int yBound = 0;\n        int yBound2 = 0;\n\n        if (w-\nGetTotal() \n= 4) {\n            row2 = w-\nGetTotal() - 3;\n            yBound = m_pBackBuffer-\nGetHeight() / 3;\n            yBound2 = m_pBackBuffer-\nGetHeight() / row2;\n        }\n        else \n            yBound = m_pBackBuffer-\nGetHeight() / w-\nGetTotal();\n\n        int tempYB = yBound;\n        int tempYB2 = yBound2;\n\n        int spawned = 0;\n        int yTop = 0;\n        int xBound = 700;\n        int spawnY = 0;\n\n        int numBoss = w-\nGetBoss();\n        int numC = w-\nGetC();\n        int numB = w-\nGetB();\n        int numA = w-\nGetA();\n        Type temp;\n\n        while (spawned \n w-\nGetTotal())\n        {\n            if (numBoss \n 0)\n            {\n                temp = Boss;\n                numBoss--;\n            }\n            else if (numC \n 0)\n            {\n                temp = typeC;\n                numC--;\n            }\n            else if (numB \n 0)\n            {\n                temp = typeB;\n                numB--;\n            }\n            else if (numA \n 0)\n            {\n                temp = typeA;\n                numA--;\n            }\n\n            spawnY = yTop + (tempYB - yTop) / 2;\n            if (spawned \n 3){\n                SpawnEnemy(temp, 830, spawnY, xBound, yTop, tempYB - 30);\n                yTop = tempYB;\n                tempYB += yBound;\n            }\n            else{\n                SpawnEnemy(temp, 830, spawnY + 50, xBound, yTop, tempYB2 - 30);\n                yTop = tempYB2;\n                tempYB2 += yBound2;\n            }\n\n            spawned++;\n\n\n            if (spawned == 3)\n            {\n                yTop = 0;\n                xBound = 600;\n            }\n        }\n    }\n}", 
             "title": "Backfire"
         }, 
         {
             "location": "/backfire/#backfire", 
-            "text": "A 2D bullet-hell SHMUP style game developed soley by myself for the Individual game assignment.", 
+            "text": "A 2D bullet-hell SHMUP style game developed by myself in C++ for the Individual game assignment.", 
             "title": "Backfire"
         }, 
         {
             "location": "/backfire/#screenshot", 
-            "text": "Picture", 
+            "text": "Backfire gameplay - horizontal SHMUP with animated sprites for explosions, ammo bar", 
             "title": "Screenshot"
         }, 
         {
-            "location": "/backfire/#code", 
-            "text": "blach();", 
-            "title": "Code?"
+            "location": "/backfire/#enemy-wave-algorithm", 
+            "text": "Enemy waves were created by parsing a text file with values for numbers of each enemy in five waves. \nAt the start of the game the file is read and all the waves are pushed into a queue, which pops and spawns a new wave after the \nlast wave has been defeated.  void\nGame::GenerateWaves()\n{\n\n    int typeA, typeB, typeC, boss;\n\n    for (int i = 1; i   6; i++)\n    {\n        switch (i)\n        {\n            case 1:\n                typeA = parser- ParseIni(\"[Wave1]\", \"typeA\", 3);\n                typeB = parser- ParseIni(\"[Wave1]\", \"typeB\", 0);\n                typeC = parser- ParseIni(\"[Wave1]\", \"typeC\", 0);\n                boss =  parser- ParseIni(\"[Wave1]\", \"boss\", 0);\n                break;\n            case 2:\n                typeA = parser- ParseIni(\"[Wave2]\", \"typeA\", 1);\n                typeB = parser- ParseIni(\"[Wave2]\", \"typeB\", 1);\n                typeC = parser- ParseIni(\"[Wave2]\", \"typeC\", 1);\n                boss =  parser- ParseIni(\"[Wave2]\", \"boss\", 0);\n                break;\n            case 3:\n                typeA = parser- ParseIni(\"[Wave3]\", \"typeA\", 1);\n                typeB = parser- ParseIni(\"[Wave3]\", \"typeB\", 2);\n                typeC = parser- ParseIni(\"[Wave3]\", \"typeC\", 1);\n                boss = parser- ParseIni(\"[Wave3]\", \"boss\", 0);\n                break;\n            case 4:\n                typeA = parser- ParseIni(\"[Wave4]\", \"typeA\", 1);\n                typeB = parser- ParseIni(\"[Wave4]\", \"typeB\", 2);\n                typeC = parser- ParseIni(\"[Wave4]\", \"typeC\", 2);\n                boss = parser- ParseIni(\"[Wave4]\", \"boss\", 0);\n                break;\n            case 5:\n                typeA = parser- ParseIni(\"[Wave5]\", \"typeA\", 0);\n                typeB = parser- ParseIni(\"[Wave5]\", \"typeB\", 0);\n                typeC = parser- ParseIni(\"[Wave5]\", \"typeC\", 0);\n                boss = parser- ParseIni(\"[Wave5]\", \"boss\", 1);\n                break;\n        }\n        Wave* temp = new Wave(typeA, typeB, typeC, boss);\n        m_waves.push(temp);\n    }\n}\n\nvoid\nGame::SpawnWave(Wave* w)\n{\n    if (w- GetTotal()   0   w- GetTotal()  = 6)\n    {\n        int row2 = 0;\n        int yBound = 0;\n        int yBound2 = 0;\n\n        if (w- GetTotal()  = 4) {\n            row2 = w- GetTotal() - 3;\n            yBound = m_pBackBuffer- GetHeight() / 3;\n            yBound2 = m_pBackBuffer- GetHeight() / row2;\n        }\n        else \n            yBound = m_pBackBuffer- GetHeight() / w- GetTotal();\n\n        int tempYB = yBound;\n        int tempYB2 = yBound2;\n\n        int spawned = 0;\n        int yTop = 0;\n        int xBound = 700;\n        int spawnY = 0;\n\n        int numBoss = w- GetBoss();\n        int numC = w- GetC();\n        int numB = w- GetB();\n        int numA = w- GetA();\n        Type temp;\n\n        while (spawned   w- GetTotal())\n        {\n            if (numBoss   0)\n            {\n                temp = Boss;\n                numBoss--;\n            }\n            else if (numC   0)\n            {\n                temp = typeC;\n                numC--;\n            }\n            else if (numB   0)\n            {\n                temp = typeB;\n                numB--;\n            }\n            else if (numA   0)\n            {\n                temp = typeA;\n                numA--;\n            }\n\n            spawnY = yTop + (tempYB - yTop) / 2;\n            if (spawned   3){\n                SpawnEnemy(temp, 830, spawnY, xBound, yTop, tempYB - 30);\n                yTop = tempYB;\n                tempYB += yBound;\n            }\n            else{\n                SpawnEnemy(temp, 830, spawnY + 50, xBound, yTop, tempYB2 - 30);\n                yTop = tempYB2;\n                tempYB2 += yBound2;\n            }\n\n            spawned++;\n\n\n            if (spawned == 3)\n            {\n                yTop = 0;\n                xBound = 600;\n            }\n        }\n    }\n}", 
+            "title": "Enemy wave algorithm"
         }, 
         {
             "location": "/second/", 
-            "text": "The Second to Last of Us\n\n\nA top-down zombie survival game developed by myself, Adam Frewen and Seong Jho for the Team game assignment.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
+            "text": "The Second to Last of Us\n\n\nA top-down zombie survival game developed by myself, Adam Frewen and Seong Jho in C++ for the team game assignment.\n\n\nScreenshot\n\n\n\n\nGameplay - zombies wander aimlessly until they detect the player, player has limited ammo to deal with them\n\n\nArtificial Intelligence\n\n\nThe Zombie's AI is based on a state machine, with states like such:\n\n\n\n\nPassive - Zombie wander's aimlessly\n\n\nAlert - Zombie has seen player, waits a second to give player chance to escape\n\n\nAgro - Zombie chases player, tries to kill when in melee range\n\n\n\n\nI implemented the initial basic wandering code by integrating an example from (Buckland, 2005) with Box2D movement.\n\n\nvoid\nZombie::Wander()\n{\n    float r1 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));\n    mv_wanderTarget.x += r1 * md_wanderJitter;\n\n    float r2 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));\n    mv_wanderTarget.y += r2 * md_wanderJitter;\n\n    mv_wanderTarget.Normalize();\n\n    mv_wanderTarget.x *= md_wanderRadius;\n    mv_wanderTarget.y *= md_wanderRadius;\n\n    Move(mv_wanderTarget.x, mv_wanderTarget.y);\n}\n\n\n\nThe move function moves the Zombie's Box2D collision body along the given vector\n\n\nBox2D\n\n\nDeveloping this game was my first time using Box2D and while using it has been mostly poistive ther have been some issues. \nWe had a problem with the Player's bullets colliding with the player itself, I ended up fixing it by following (Box2D C++ tutorials, 2013) and applying coliision filters to all the Box2D bodies in the game.\n\n\nReferences\n\n\n\n\nBuckland, M. (2005). Programming game AI by example. Sudbury, Mass. : Wordware Pub., 2005.\n\n\nBox2D C++ tutorials - Collision filtering (2013, July 14). Retrieved from http://www.iforce2d.net/b2dtut/collision-filtering", 
             "title": "The Second to Last of Us"
         }, 
         {
             "location": "/second/#the-second-to-last-of-us", 
-            "text": "A top-down zombie survival game developed by myself, Adam Frewen and Seong Jho for the Team game assignment.", 
+            "text": "A top-down zombie survival game developed by myself, Adam Frewen and Seong Jho in C++ for the team game assignment.", 
             "title": "The Second to Last of Us"
         }, 
         {
             "location": "/second/#screenshot", 
-            "text": "Picture", 
+            "text": "Gameplay - zombies wander aimlessly until they detect the player, player has limited ammo to deal with them", 
             "title": "Screenshot"
         }, 
         {
-            "location": "/second/#code", 
-            "text": "blach();", 
-            "title": "Code?"
+            "location": "/second/#artificial-intelligence", 
+            "text": "The Zombie's AI is based on a state machine, with states like such:   Passive - Zombie wander's aimlessly  Alert - Zombie has seen player, waits a second to give player chance to escape  Agro - Zombie chases player, tries to kill when in melee range   I implemented the initial basic wandering code by integrating an example from (Buckland, 2005) with Box2D movement.  void\nZombie::Wander()\n{\n    float r1 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));\n    mv_wanderTarget.x += r1 * md_wanderJitter;\n\n    float r2 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));\n    mv_wanderTarget.y += r2 * md_wanderJitter;\n\n    mv_wanderTarget.Normalize();\n\n    mv_wanderTarget.x *= md_wanderRadius;\n    mv_wanderTarget.y *= md_wanderRadius;\n\n    Move(mv_wanderTarget.x, mv_wanderTarget.y);\n}  The move function moves the Zombie's Box2D collision body along the given vector", 
+            "title": "Artificial Intelligence"
+        }, 
+        {
+            "location": "/second/#box2d", 
+            "text": "Developing this game was my first time using Box2D and while using it has been mostly poistive ther have been some issues. \nWe had a problem with the Player's bullets colliding with the player itself, I ended up fixing it by following (Box2D C++ tutorials, 2013) and applying coliision filters to all the Box2D bodies in the game.", 
+            "title": "Box2D"
+        }, 
+        {
+            "location": "/second/#references", 
+            "text": "Buckland, M. (2005). Programming game AI by example. Sudbury, Mass. : Wordware Pub., 2005.  Box2D C++ tutorials - Collision filtering (2013, July 14). Retrieved from http://www.iforce2d.net/b2dtut/collision-filtering", 
+            "title": "References"
         }, 
         {
             "location": "/agh/", 
-            "text": "Audio Game Hub\n\n\nTwo audio games developed by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.\n\n\nScreenshot\n\n\n\n\nPicture\n\n\n\n\nCode?\n\n\nblach();", 
+            "text": "Audio Game Hub\n\n\nTwo audio games for the visually impaired developed in Unity3D by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.\n\n\nThis was a really interesting project as someone who is interested in game development and design, because in standard games we rely so much on visuals to give information to the player.\nHaving to design games that could be played without any visuals at all created a lot of limits on what types of games we could make, and how they had to play.\nHowever, these limitations made the design process really enjoyable, even if the games themselves are fairly simple.\n\n\nSimon\n\n\nAudio version of the memory game Simon.\n\n\n\n\nSimon gameplay - buttons light up and play directional sound effects based on button location\n\n\nSimon was our first game, and while it was fairly simple to code the primary challenge was learning Unity and C#, which I had never used before.\n\n\nBlack Jack\n\n\nAudio version of the casino game Black Jack.\n\n\n\n\nBlack Jack gameplay - Designed with audio cues to let blind players understand what is happening and how to interact with the game\n\n\nBlack Jack was more challenging from a design standpoint because we have multiple inputs and more information that needs to be available to the player at any given time.\nIt took numerous iterations and testing to develop a tutorial that taught non-sighted players how to play, in addition to the audio cues throught the game to describe the game state to players.", 
             "title": "Audio Game Hub"
         }, 
         {
             "location": "/agh/#audio-game-hub", 
-            "text": "Two audio games developed by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.", 
+            "text": "Two audio games for the visually impaired developed in Unity3D by myself, Taylor Louie, Daniel Andrews and Sherry Xie for the AUT Research and Development project.  This was a really interesting project as someone who is interested in game development and design, because in standard games we rely so much on visuals to give information to the player.\nHaving to design games that could be played without any visuals at all created a lot of limits on what types of games we could make, and how they had to play.\nHowever, these limitations made the design process really enjoyable, even if the games themselves are fairly simple.", 
             "title": "Audio Game Hub"
         }, 
         {
-            "location": "/agh/#screenshot", 
-            "text": "Picture", 
-            "title": "Screenshot"
+            "location": "/agh/#simon", 
+            "text": "Audio version of the memory game Simon.   Simon gameplay - buttons light up and play directional sound effects based on button location  Simon was our first game, and while it was fairly simple to code the primary challenge was learning Unity and C#, which I had never used before.", 
+            "title": "Simon"
         }, 
         {
-            "location": "/agh/#code", 
-            "text": "blach();", 
-            "title": "Code?"
+            "location": "/agh/#black-jack", 
+            "text": "Audio version of the casino game Black Jack.   Black Jack gameplay - Designed with audio cues to let blind players understand what is happening and how to interact with the game  Black Jack was more challenging from a design standpoint because we have multiple inputs and more information that needs to be available to the player at any given time.\nIt took numerous iterations and testing to develop a tutorial that taught non-sighted players how to play, in addition to the audio cues throught the game to describe the game state to players.", 
+            "title": "Black Jack"
         }
     ]
 }

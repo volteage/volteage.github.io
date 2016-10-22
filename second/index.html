@@ -112,7 +112,11 @@
         
             <li><a href="#screenshot">Screenshot</a></li>
         
-            <li><a href="#code">Code?</a></li>
+            <li><a href="#artificial-intelligence">Artificial Intelligence</a></li>
+        
+            <li><a href="#box2d">Box2D</a></li>
+        
+            <li><a href="#references">References</a></li>
         
     
     </ul>
@@ -120,14 +124,44 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="the-second-to-last-of-us">The Second to Last of Us</h1>
-<p>A top-down zombie survival game developed by myself, Adam Frewen and Seong Jho for the Team game assignment.</p>
+<p>A top-down zombie survival game developed by myself, Adam Frewen and Seong Jho in C++ for the team game assignment.</p>
 <h2 id="screenshot">Screenshot</h2>
+<p><img alt="Screenshot" src="../img/SLU_SS.png" /></p>
+<p><em>Gameplay - zombies wander aimlessly until they detect the player, player has limited ammo to deal with them</em></p>
+<h2 id="artificial-intelligence">Artificial Intelligence</h2>
+<p>The Zombie's AI is based on a state machine, with states like such:</p>
 <ul>
-<li>Picture</li>
+<li>Passive - Zombie wander's aimlessly</li>
+<li>Alert - Zombie has seen player, waits a second to give player chance to escape</li>
+<li>Agro - Zombie chases player, tries to kill when in melee range</li>
 </ul>
-<h2 id="code">Code?</h2>
-<pre><code>blach();
-</code></pre></div>
+<p>I implemented the initial basic wandering code by integrating an example from (Buckland, 2005) with Box2D movement.</p>
+<pre><code>void
+Zombie::Wander()
+{
+    float r1 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));
+    mv_wanderTarget.x += r1 * md_wanderJitter;
+
+    float r2 = ((float)rand() / (RAND_MAX+1)) - ((float)rand() / (RAND_MAX+1));
+    mv_wanderTarget.y += r2 * md_wanderJitter;
+
+    mv_wanderTarget.Normalize();
+
+    mv_wanderTarget.x *= md_wanderRadius;
+    mv_wanderTarget.y *= md_wanderRadius;
+
+    Move(mv_wanderTarget.x, mv_wanderTarget.y);
+}
+</code></pre>
+<p><em>The move function moves the Zombie's Box2D collision body along the given vector</em></p>
+<h2 id="box2d">Box2D</h2>
+<p>Developing this game was my first time using Box2D and while using it has been mostly poistive ther have been some issues. 
+We had a problem with the Player's bullets colliding with the player itself, I ended up fixing it by following (Box2D C++ tutorials, 2013) and applying coliision filters to all the Box2D bodies in the game.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Buckland, M. (2005). Programming game AI by example. Sudbury, Mass. : Wordware Pub., 2005.</li>
+<li>Box2D C++ tutorials - Collision filtering (2013, July 14). Retrieved from http://www.iforce2d.net/b2dtut/collision-filtering</li>
+</ul></div>
             
         </div>
 

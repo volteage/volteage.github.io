@@ -112,7 +112,7 @@
         
             <li><a href="#screenshot">Screenshot</a></li>
         
-            <li><a href="#code">Code?</a></li>
+            <li><a href="#enemy-wave-algorithm">Enemy wave algorithm</a></li>
         
     
     </ul>
@@ -120,13 +120,137 @@
                 <div class="col-md-9" role="main">
 
 <h1 id="backfire">Backfire</h1>
-<p>A 2D bullet-hell SHMUP style game developed soley by myself for the Individual game assignment.</p>
+<p>A 2D bullet-hell SHMUP style game developed by myself in C++ for the Individual game assignment.</p>
 <h2 id="screenshot">Screenshot</h2>
-<ul>
-<li>Picture</li>
-</ul>
-<h2 id="code">Code?</h2>
-<pre><code>blach();
+<p><img alt="Screenshot" src="../img/BF_SS.png" /></p>
+<p><em>Backfire gameplay - horizontal SHMUP with animated sprites for explosions, ammo bar</em></p>
+<h2 id="enemy-wave-algorithm">Enemy wave algorithm</h2>
+<p>Enemy waves were created by parsing a text file with values for numbers of each enemy in five waves. 
+At the start of the game the file is read and all the waves are pushed into a queue, which pops and spawns a new wave after the 
+last wave has been defeated.</p>
+<pre><code>void
+Game::GenerateWaves()
+{
+
+    int typeA, typeB, typeC, boss;
+
+    for (int i = 1; i &lt; 6; i++)
+    {
+        switch (i)
+        {
+            case 1:
+                typeA = parser-&gt;ParseIni("[Wave1]", "typeA", 3);
+                typeB = parser-&gt;ParseIni("[Wave1]", "typeB", 0);
+                typeC = parser-&gt;ParseIni("[Wave1]", "typeC", 0);
+                boss =  parser-&gt;ParseIni("[Wave1]", "boss", 0);
+                break;
+            case 2:
+                typeA = parser-&gt;ParseIni("[Wave2]", "typeA", 1);
+                typeB = parser-&gt;ParseIni("[Wave2]", "typeB", 1);
+                typeC = parser-&gt;ParseIni("[Wave2]", "typeC", 1);
+                boss =  parser-&gt;ParseIni("[Wave2]", "boss", 0);
+                break;
+            case 3:
+                typeA = parser-&gt;ParseIni("[Wave3]", "typeA", 1);
+                typeB = parser-&gt;ParseIni("[Wave3]", "typeB", 2);
+                typeC = parser-&gt;ParseIni("[Wave3]", "typeC", 1);
+                boss = parser-&gt;ParseIni("[Wave3]", "boss", 0);
+                break;
+            case 4:
+                typeA = parser-&gt;ParseIni("[Wave4]", "typeA", 1);
+                typeB = parser-&gt;ParseIni("[Wave4]", "typeB", 2);
+                typeC = parser-&gt;ParseIni("[Wave4]", "typeC", 2);
+                boss = parser-&gt;ParseIni("[Wave4]", "boss", 0);
+                break;
+            case 5:
+                typeA = parser-&gt;ParseIni("[Wave5]", "typeA", 0);
+                typeB = parser-&gt;ParseIni("[Wave5]", "typeB", 0);
+                typeC = parser-&gt;ParseIni("[Wave5]", "typeC", 0);
+                boss = parser-&gt;ParseIni("[Wave5]", "boss", 1);
+                break;
+        }
+        Wave* temp = new Wave(typeA, typeB, typeC, boss);
+        m_waves.push(temp);
+    }
+}
+
+void
+Game::SpawnWave(Wave* w)
+{
+    if (w-&gt;GetTotal() &gt; 0 &amp;&amp; w-&gt;GetTotal() &lt;= 6)
+    {
+        int row2 = 0;
+        int yBound = 0;
+        int yBound2 = 0;
+
+        if (w-&gt;GetTotal() &gt;= 4) {
+            row2 = w-&gt;GetTotal() - 3;
+            yBound = m_pBackBuffer-&gt;GetHeight() / 3;
+            yBound2 = m_pBackBuffer-&gt;GetHeight() / row2;
+        }
+        else 
+            yBound = m_pBackBuffer-&gt;GetHeight() / w-&gt;GetTotal();
+
+        int tempYB = yBound;
+        int tempYB2 = yBound2;
+
+        int spawned = 0;
+        int yTop = 0;
+        int xBound = 700;
+        int spawnY = 0;
+
+        int numBoss = w-&gt;GetBoss();
+        int numC = w-&gt;GetC();
+        int numB = w-&gt;GetB();
+        int numA = w-&gt;GetA();
+        Type temp;
+
+        while (spawned &lt; w-&gt;GetTotal())
+        {
+            if (numBoss &gt; 0)
+            {
+                temp = Boss;
+                numBoss--;
+            }
+            else if (numC &gt; 0)
+            {
+                temp = typeC;
+                numC--;
+            }
+            else if (numB &gt; 0)
+            {
+                temp = typeB;
+                numB--;
+            }
+            else if (numA &gt; 0)
+            {
+                temp = typeA;
+                numA--;
+            }
+
+            spawnY = yTop + (tempYB - yTop) / 2;
+            if (spawned &lt; 3){
+                SpawnEnemy(temp, 830, spawnY, xBound, yTop, tempYB - 30);
+                yTop = tempYB;
+                tempYB += yBound;
+            }
+            else{
+                SpawnEnemy(temp, 830, spawnY + 50, xBound, yTop, tempYB2 - 30);
+                yTop = tempYB2;
+                tempYB2 += yBound2;
+            }
+
+            spawned++;
+
+
+            if (spawned == 3)
+            {
+                yTop = 0;
+                xBound = 600;
+            }
+        }
+    }
+}
 </code></pre></div>
             
         </div>
