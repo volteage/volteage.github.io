@@ -2,13 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Andrew Pike #1299530 Programming Portfolio\n\n\nCurrently a BCIS student at Auckland University of Technology\n\n\nProgramming experience in:\n\n\n\n\nJava\n\n\nC++\n\n\nC#\n\n\nHTML\n\n\nPHP\n\n\nJavascript\n\n\nSQL\n\n\n\n\nSome other stuff\n\n\nWords I guess?", 
+            "text": "Andrew Pike's Programming Portfolio\n\n\nCurrently a BCIS student at Auckland University of Technology\n\n\nProgramming experience in:\n\n\n\n\nJava\n\n\nC++\n\n\nC#\n\n\nHTML\n\n\nPHP\n\n\nJavascript\n\n\nSQL\n\n\n\n\nTool and middleware experience:\n\n\nUnity3D\n\nFMOD\n\nBox2D\n\nOpenGL", 
             "title": "Home"
         }, 
         {
-            "location": "/#andrew-pike-1299530-programming-portfolio", 
+            "location": "/#andrew-pikes-programming-portfolio", 
             "text": "Currently a BCIS student at Auckland University of Technology", 
-            "title": "Andrew Pike #1299530 Programming Portfolio"
+            "title": "Andrew Pike's Programming Portfolio"
         }, 
         {
             "location": "/#programming-experience-in", 
@@ -16,18 +16,18 @@
             "title": "Programming experience in:"
         }, 
         {
-            "location": "/#some-other-stuff", 
-            "text": "Words I guess?", 
-            "title": "Some other stuff"
+            "location": "/#tool-and-middleware-experience", 
+            "text": "Unity3D FMOD Box2D OpenGL", 
+            "title": "Tool and middleware experience:"
         }, 
         {
             "location": "/backfire/", 
-            "text": "Backfire stuff", 
+            "text": "Backfire stuff\n\n\nA 2D bullet-hell SHMUP style game developed soley by myself", 
             "title": "Backfire"
         }, 
         {
             "location": "/backfire/#backfire-stuff", 
-            "text": "", 
+            "text": "A 2D bullet-hell SHMUP style game developed soley by myself", 
             "title": "Backfire stuff"
         }
     ]
