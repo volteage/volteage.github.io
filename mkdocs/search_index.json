@@ -2,23 +2,23 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md        # The documentation homepage.\n    backfire.md     # Backfire page\n    ...              # Other markdown pages, images and other files.", 
+            "text": "Andrew Pike #1299530 Programming Portfolio\n\n\nCurrently a BCIS student at Auckland University of Technology\n\n\nProgramming experience in:\n\n\n\n\nJava\n\n\nC++\n\n\nC#\n\n\nHTML\n\n\nPHP\n\n\nJavascript\n\n\nSQL\n\n\n\n\nSome other stuff\n\n\nWords I guess?", 
             "title": "Home"
         }, 
         {
-            "location": "/#welcome-to-mkdocs", 
-            "text": "For full documentation visit  mkdocs.org .", 
-            "title": "Welcome to MkDocs"
+            "location": "/#andrew-pike-1299530-programming-portfolio", 
+            "text": "Currently a BCIS student at Auckland University of Technology", 
+            "title": "Andrew Pike #1299530 Programming Portfolio"
         }, 
         {
-            "location": "/#commands", 
-            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
-            "title": "Commands"
+            "location": "/#programming-experience-in", 
+            "text": "Java  C++  C#  HTML  PHP  Javascript  SQL", 
+            "title": "Programming experience in:"
         }, 
         {
-            "location": "/#project-layout", 
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md        # The documentation homepage.\n    backfire.md     # Backfire page\n    ...              # Other markdown pages, images and other files.", 
-            "title": "Project layout"
+            "location": "/#some-other-stuff", 
+            "text": "Words I guess?", 
+            "title": "Some other stuff"
         }, 
         {
             "location": "/backfire/", 
